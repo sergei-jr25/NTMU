@@ -33,15 +33,27 @@ const ProductList: FC = () => {
 	})
 
 	if (isLoading) {
-		return <CircularProgress />
+		return (
+			<Box sx={{ minHeight: '80vh', marginTop: 4 }}>
+				<CircularProgress />
+			</Box>
+		)
 	}
 
 	if (error) {
-		return <Alert severity='error'>{error.message}</Alert>
+		return (
+			<Alert severity='error' sx={{ marginBottom: 4 }}>
+				{error.message}
+			</Alert>
+		)
 	}
 
 	if (!isLoading && (!data || data.length === 0)) {
-		return <Alert severity='info'>Товары не найдены</Alert>
+		return (
+			<Alert severity='info' sx={{ marginBottom: 4 }}>
+				Товары не найдены
+			</Alert>
+		)
 	}
 
 	return (

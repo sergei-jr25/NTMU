@@ -1,6 +1,5 @@
 import {
 	Box,
-	debounce,
 	Drawer,
 	FormControlLabel,
 	Switch,
@@ -28,18 +27,15 @@ const Sidebar: React.FC<SidebarProps> = ({
 	showOnlyNew,
 	onShowOnlyNewChange,
 }) => {
-	const handlePriceChange = useCallback(
-		debounce((value: string, isMin: boolean) => {
-			const numericValue = value === '' ? 0 : Number(value.replace(/^0+/, ''))
+	const handlePriceChange = useCallback((value: string, isMin: boolean) => {
+		const numericValue = value === '' ? 0 : Number(value.replace(/^0+/, ''))
 
-			if (isMin) {
-				onPriceChange(numericValue, maxPrice)
-			} else {
-				onPriceChange(minPrice, numericValue)
-			}
-		}),
-		[]
-	)
+		if (isMin) {
+			onPriceChange(numericValue, maxPrice)
+		} else {
+			onPriceChange(minPrice, numericValue)
+		}
+	}, [])
 	return (
 		<Drawer anchor='left' open={isOpen} onClose={onClose} color='red'>
 			<Box sx={{ width: 250, padding: 2 }}>

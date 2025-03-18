@@ -13,7 +13,7 @@ type UseFilteredProductsProps = {
 
 export const useProduct = () => {
 	const [data, setData] = useState<IProduct[] | null>([])
-	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [error, setError] = useState<Error | null>(null)
 
 	useEffect(() => {
